@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Бельгійске містечко</title>
+  <meta charset="utf-8">  <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">  <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+<body class="lang_ua">
+	<header>
+		<span class="header_logo ua" ><a href="index.html"><img alt="" src="img/logo_ua.png"></a></span>
+		<div class="menu">
+			<ul class="primary_menu">
+				<li class="menu_item"><a href="index.html" class="menu_link">Головна</a></li>
+				<li class="menu_item"><a href="location.html" class="menu_link">Розташування</a></li>
+				<li class="menu_item"><a href="contact.html" class="menu_link">Контакти</a></li>
+			</ul>
+		</div>
+		<div id="hamburger" class="hamburger is-closed">
+        	<div class="burger-icon">
+	          <div class="burger-container">
+	            <span class="burger-bun-top"></span>
+	            <span class="burger-filling"></span>
+	            <span class="burger-bun-bot"></span>
+	          </div>
+	        </div>
+	        <!-- svg ring containter -->
+	        <div class="burger-ring">
+	          <svg class="svg-ring">
+	            <path class="path" fill="none" stroke="#383839" stroke-miterlimit="10" stroke-width="4" d="M 34 2 C 16.3 2 2 16.3 2 34 s 14.3 32 32 32 s 32 -14.3 32 -32 S 51.7 2 34 2"></path>
+	          </svg>
+	        </div>
+	        <!-- the masked path that animates the fill to the ring -->
+	        <svg width="0" height="0">
+	          <mask id="mask">
+	            <path xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#ff0000" stroke-miterlimit="10" stroke-width="4" d="M 34 2 c 11.6 0 21.8 6.2 27.4 15.5 c 2.9 4.8 5 16.5 -9.4 16.5 h -4"></path>
+	          </mask>
+	        </svg>
+	        <div class="path-burger">
+	          <div class="animate-path">
+	            <div class="path-rotation"></div>
+	          </div>
+	        </div>
+	    </div>
+		<div class="language_switcher">
+			<ul>
+				<li><a href="#">UA</a></li>
+				<li><a href="location_en.html">EN</a></li>
+			</ul>
+		</div>
+
+	</header>
+	<main id="main" class="content">
+		<div class="wrapper">
+			<div class="location">
+				<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&language=en?&key=AIzaSyBf7baQKvlK5iZ91MF5QtGJ1RbBNgsFows'></script>
+				<script type="text/javascript" src="js/infobox.js"></script>
+                <div id='gmap_canvas'></div>
+                <script type='text/javascript'>
+                	function init_map(){
+                		var myOptions = {
+                			zoom:14,
+                			center:new google.maps.LatLng(49.7241472,23.918997),
+                			mapTypeId: google.maps.MapTypeId.ROADMAP,
+                			styles: [{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#d3d3d3"}]},{"featureType":"transit","stylers":[{"color":"#808080"},{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"on"},{"color":"#b3b3b3"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"weight":1.8}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"color":"#d7d7d7"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ebebeb"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#a7a7a7"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#efefef"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#696969"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"color":"#737373"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#d6d6d6"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"color":"#dadada"}]}]
+                		};
+
+
+                		map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+                		
+  						marker1 = new google.maps.Marker({map: map,icon: image,position: new google.maps.LatLng(49.7241472,23.918997)});
+                		marker3 = new google.maps.Marker({map: map,icon: image,position: new google.maps.LatLng(49.852718,24.0412333)});
+                		marker2 = new google.maps.Marker({map: map,icon: image,position: new google.maps.LatLng(49.8526353,24.0193005)});
+                		
+                		function drawIb(name, link){
+							var boxText = document.createElement("div"), linkFull = '';
+							if (link !='') {
+								linkFull = "<a href="+link+">view project</a>"
+							}
+							boxText.innerHTML = "<div class='cont_wr4'>"+name+linkFull+"</div><div class='trian'></div>";
+
+							var myOptions = {
+							    content: boxText
+							    , disableAutoPan: false
+							    , maxWidth: 0
+							    , pixelOffset: new google.maps.Size(0, -160)
+							    , zIndex: null
+							    , boxStyle: {
+							        width: "310px"
+							    }
+							    , closeBoxMargin: "10px 20px"
+							    , closeBoxURL: "img/close.png"
+							    , infoBoxClearance: new google.maps.Size(1, 1)
+							    , isHidden: false
+							    , pane: "floatPane"
+							    , enableEventPropagation: false
+							};
+							return new InfoBox(myOptions);                			
+                		}
+
+                		var ib1 = drawIb('Бельгійське Містечко', 'index.html');
+                		var ib2 = drawIb('Офіс Продажу', '');
+                		var ib3 = drawIb('Головний Офіс', '');
+
+                		marker1.addListener('click', function() {
+	    					ib1.open(map, marker1);
+	    					$('.item1').toggleClass('shine');
+  						});
+  						ib1.addListener('closeclick', function() {
+	    					$('.item1').toggleClass('shine');
+  						});
+
+  						marker2.addListener('click', function() {
+	    					ib2.open(map, marker2);
+	    					$('.item2').toggleClass('shine');
+  						});
+  						ib2.addListener('closeclick', function() {
+	    					$('.item2').toggleClass('shine');
+  						});
+
+  						marker3.addListener('click', function() {
+	    					ib3.open(map, marker3);
+	    					$('.item3').toggleClass('shine');
+  						});
+  						ib3.addListener('closeclick', function() {
+	    					$('.item3').toggleClass('shine');
+  						});
+
+  						$('.item1').on('mouseenter', function(){
+  							ib1.open(map, marker1);
+  						});
+  						$('.item1').on('mouseleave', function(){
+  							ib1.close(map, marker1);
+  						});
+
+  						$('.item2').on('mouseenter', function(){
+  							ib2.open(map, marker2);
+  						});
+  						$('.item2').on('mouseleave', function(){
+  							ib2.close(map, marker2);
+  						});
+
+  						$('.item3').on('mouseenter', function(){
+  							ib3.open(map, marker3);
+  						});
+  						$('.item3').on('mouseleave', function(){
+  							ib3.close(map, marker3);
+  						});
+
+  						///////////////////////
+  						var image = 'img/grey_marker1.png';
+						
+						function drawCustMap(cLat, cLng, name) {
+							var marker_g = new google.maps.Marker({
+							    center: {lat: cLat, lng: cLng},
+							    map: map,
+							    icon: image
+							});
+							
+	                		var boxText = document.createElement("div");
+						    boxText.innerHTML = "<div class='cont_wr4'>"+name+"<a href='senegal.html?tour=tourism'>learn more</a></div><div class='trian'></div>";
+
+						    var myOptions = {
+						        content: boxText
+						        , disableAutoPan: false
+						        , maxWidth: 0
+						        , pixelOffset: new google.maps.Size(0, -160)
+						        , zIndex: null
+						        , boxStyle: {
+						            width: "310px"
+						        }
+						        , closeBoxMargin: "10px 20px"
+						        , closeBoxURL: "img/close.png"
+						        , infoBoxClearance: new google.maps.Size(1, 1)
+						        , isHidden: false
+						        , pane: "floatPane"
+						        , enableEventPropagation: false
+						    };
+						    var ib = new InfoBox(myOptions);
+						    
+						    marker_g.addListener('click', function() {
+						    	ib.open(map, marker_g);
+							});
+						}
+							 					
+                	}
+                	google.maps.event.addDomListener(window, 'load', init_map);
+                </script>
+                <div class="location_info">
+					<div class="location_item item1">
+						<h3>Бельгійське Містечко</h3>
+						<span class="loc_info"><i class="fa fa-map-marker"></i>Пустомити&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Україна</span>
+						<a href="index.html" class="view_link" tabindex="0">До проекту</a>
+					</div>					
+					<div class="location_item item2">
+						<h3>Офіс Продажу</h3>
+						<span class="loc_info"><i class="fa fa-map-marker"></i>Львів&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Україна</span>
+					</div>
+					<div class="location_item item3">
+						<h3>Головний офіс</h3>
+						<span class="loc_info"><i class="fa fa-map-marker"></i>Львів&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Україна</span>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</main>
+<footer>
+		<span class="copy">&copy;2016. Усі права захищено.</span>
+		<span class="dev_logo"><img alt="" src="img/logo_ua.png"></span>
+		<span class="foot_md"><a href="mailto:info@bm.lviv.ua"><i class="fa fa-at"></i>info@bm.lviv.ua</a><br><a href="tel:+12345678901"><i class="fa fa-phone"></i>+38 (032) 253 73 42</a></span>
+		<span class="dev"><i class="fa fa-map-marker"></i>Офіс продажу
+<br>вул. Джерельна, 69</span>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="js/custom.js"></script>
+		<script src="js/slick.js"></script>
+	</footer>
+</body>
+</html>
